@@ -2,3 +2,8 @@
   border: 1px solid black;
   align-content: center;
 }
+
+.headerMain {
+  align-content: center;
+  margin-left: 35%;
+}

@@ -13,7 +13,9 @@
     <script src="" async defer></script>
     <script src="webgazer.js"></script>
 
-    <h1>WebGazer.js</h1>
+    <h1 class="headerMain">
+      WebGazer.js Click once to start - Hold spacebar to start drawing!
+    </h1>
     <canvas
       id="myCanvas"
       width="100%"
@@ -39,10 +41,11 @@
                 ctx.stroke();
                 ctx.closePath();
               }
-            }),
-            0
+            })
           );
-
+          window.onkeydown = function (e) {
+            return !(e.keyCode == 32);
+          };
           //   console.log(data); elapsed time is based on time since begin was called
         })
         .begin();
@@ -52,11 +55,14 @@
       var c = document.getElementById("myCanvas");
       var ctx = c.getContext("2d");
 
-      c.width = window.innerWidth;
-      c.height = window.innerHeight;
+      c.width = window.innerWidth - 50;
+      c.height = window.innerHeight - 100;
 
-      //logic that create rectangle in different function
-      //setGazelistener function - try calling function there
+      ctx.beginPath();
+      ctx.rect(c.width / 2, 0, 20, 20);
+      ctx.rect(c.width / 2, c.height - 20, 20, 20);
+      ctx.stroke();
+      ctx.closePath();
     </script>
   </body>
 </html>
