@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html>
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+
+    <script src="" async defer></script>
+    <script src="webgazer.js"></script>
+
+    <h1>WebGazer.js</h1>
+    <script>
+      webgazer
+        .setGazeListener(function (data, elapsedTime) {
+          if (data == null) {
+            return;
+          }
+          var xprediction = data.x; //these x coordinates are relative to the viewport
+          var yprediction = data.y; //these y coordinates are relative to the viewport
+          document.getElementById("tracker").innerHTML = "x =";
+          console.log(data); //elapsed time is based on time since begin was called
+        })
+        .begin();
+    </script>
+
+    <canvas
+      id="mainCanvas"
+      class="mainCanvas"
+      width="1200"
+      height="300"
+      style="border: 1px solid #000000;"
+    ></canvas>
+    <div id="tracker" height="500"></div>
+    <!-- <script>
+        
+
+    </script> -->
+    <script>
+      var mainCanvasBar = document.getElementById("mainCanvas");
+      var mainCtx = mainCanvasBar.getContext("2d");
+
+      function eyeCoords(x, y) {
+        mainCtx.beginPath();
+        mainCtx.fillRect(x, y, 20, 20);
+      }
+    </script>
+  </body>
+</html>
